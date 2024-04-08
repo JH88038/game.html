@@ -1,0 +1,154 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content
+        ="width=device-width, initial-scale=1.0"> 
+
+    <title>Craps101</title> 
+    
+    
+    <style> 
+        .container { 
+            width: 70%; 
+            margin: auto; 
+            text-align: center; 
+        } 
+  
+        .dice { 
+            text-align: center; 
+            display: inline-block; 
+            margin: 10px; 
+        } 
+  
+        body { 
+            background-color: gray; 
+            margin: 0; 
+        } 
+  
+        h1 { 
+            margin: 30px; 
+            font-family: Georgia, 'Times New Roman', Times, serif; 
+            text-shadow: 5px 0 #232931; 
+            font-size: 2.5rem; 
+            color: black; 
+            text-align: center; 
+        } 
+  
+        p { 
+            font-size: 2rem; 
+            color: black; 
+            font-family: Georgia, 'Times New Roman', Times, serif; 
+        } 
+  
+        img { 
+            width: 50%; 
+        } 
+  
+        .bottom { 
+            padding-top: 30px; 
+        } 
+  
+        .butn { 
+            background: black; 
+            font-family: Georgia, 'Times New Roman', Times, serif; 
+            border-radius: 7px; 
+            color: whitesmoke; 
+            font-size: 30px; 
+            padding: 16px 25px 16px 25px; 
+            
+        } 
+  
+        .butn:hover { 
+            background: #232931; 
+            
+        } 
+    </style> 
+</head> 
+  
+<body> 
+
+
+    <div class="container"> 
+    
+        <h2> Crypto Gram's Craps101</h2>
+        
+
+        <h1>How's Your Luck</h1> 
+  
+        <div class="dice"> 
+            <p class="Player1">Player 1</p> 
+            <img class="img1" src="D:\DELL\Documents\dice.jpg"> 
+             
+        </div> 
+  
+        <div class="dice"> 
+            <p class="Player2">Player 2</p> 
+            <img class="img2" src="D:\DELL\Documents\dice.jpg"> 
+            
+        </div> 
+    </div> 
+  
+    <div class="container bottom"> 
+        <button type="button" class="butn"
+            onClick="rollTheDice()"> 
+            Toss The Dice 
+        </button> 
+    </div> 
+    <div class="container bottom"> 
+        <button type="button" class="butn"
+            onClick="editNames()"> 
+            Change Names 
+        </button> 
+    </div> 
+  
+    <script> 
+  
+        // Players 
+        var player1 = "Player 1"; 
+        var player2 = "Player 2"; 
+  
+        // Function Changes Player Name (need text field) 
+        function editNames() { 
+            player1 = prompt("Change Player1 name"); 
+            player2 = prompt("Change player2 name"); 
+  
+            document.querySelector("p.Player1") 
+                            .innerHTML = player1; 
+                              
+            document.querySelector("p.Player2") 
+                            .innerHTML = player2; 
+        } 
+  
+        // Function Rolls Dice (does not show image)
+        function rollTheDice() { 
+            setTimeout(function () { 
+                var randomNumber1 = Math.floor(Math.random() * 6) + 1; 
+                var randomNumber2 = Math.floor(Math.random() * 6) + 1; 
+  
+                document.querySelector(".img1").setAttribute("src", 
+                    "dice" + randomNumber1 + ".png"); 
+  
+                document.querySelector(".img2").setAttribute("src", 
+                    "dice" + randomNumber2 + ".png"); 
+  
+                if (randomNumber1 === randomNumber2) { 
+                    document.querySelector("h1").innerHTML = "Draw!"; 
+                } 
+  
+                else if (randomNumber1 < randomNumber2) { 
+                    document.querySelector("h1").innerHTML 
+                        = (player2 + " WINS!"); 
+                } 
+  
+                else { 
+                    document.querySelector("h1").innerHTML 
+                        = (player1 + " WINS!"); 
+                } 
+            }, 2500); 
+        } 
+    </script> 
+</body> 
+  
+</html> 
